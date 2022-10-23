@@ -1,6 +1,7 @@
 #contenedor{
     background-image: url(./img/fondo.jpg);
     background-repeat: repeat;
+
 }
 
 #seccion{
@@ -16,3 +17,8 @@
     flex-direction: column;
     align-content: space-around;
 }
+
+boton:hover {
+    animation: heartBeat; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s; /* don't forget to set a duration! */
+  }
