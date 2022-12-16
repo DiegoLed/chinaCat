@@ -1,115 +1,79 @@
+var cad = `
+	<div class="swiper-container mySwiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+	<div class="swiper-wrapper" id="swiper-wrapper-e663671e776a9540" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
+	`;
 
-//////////////////////////////////////////////////
-const animal = {
-    nombre: "China",
-    duenio: "Diego Ledesma",
-    raza: "Galgo",
-    edad: 4,
-    actividad: ["Correr"," jugar"," hace pozos"],
-    comida: ["Balanceada"," carne"," verduras"],
-    visita: "Ultima visita: 01/08/2022",
-    vacuna: "Esquema Completo"
-}  
+for (let i = 0; i < data.length; i++) {
+	cad += `
+	<div class="swiper-slide" role="group" aria-label="${data[i].id}/31" id="tarjeta-creo" style="background-color: rgba(0, 0, 0, 0);">
+		<div class="card" style="overflow: visible;">
+			<div class="card-image" id="fotitos">
+				<img class="activator" src="${data[i].img}">
+				<div class="info-container activator"><i class="fa-regular fa-eye"></i></div>
+				<div class="centrado"></div>
+			</div>
+			<div class="card-content" id="contenido-tarjeta">
+				<span class="card-title activator" id="span-nombre-card"> <p id="nombre-card"> <b> ${data[i].nombre} </b></p></span>
+				<p><button id="boton-adoptar">Adoptar</button></p>
+			</div>
+			<div class="card-reveal" style="display: none; transform: translateY(0%);">
+				<span class="card-title activator text-darken-4" id="cont-nombre-reveal"><p id="nombre-margen"> <b>${data[i].nombre} </b></p>
+				<div class="info-container"><i class="fa-solid fa-xmark" id="cruz"></i></div>
+				<div class="centrado"></div>
+				</span>
+				<ul style="list-style: none;">
+      				<li>Raza: ${data[i].raza}</li>
+      				<li>Genero: ${data[i].genero}</li>
+      				<li>Tamaño: ${data[i].tamaño}</li>
+      				<li>Vacunas: ${data[i].vacunas}</li>
+      				<li>Castrado: ${data[i].castrado}</li>
+      				<li>Pelaje: ${data[i].pelaje}</li>
+      				<li>Tratamiento: ${data[i].tratamiento}</li>  
+    			</ul>
+      		</div>
+  		</div>
+	</div>
+		  `;
+}
+cad += `
+    </div>
+	<div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"
+        aria-controls="swiper-wrapper-e663671e776a9540" aria-disabled="false" id="boton-next"></div>
+    <div class="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide"
+        aria-controls="swiper-wrapper-e663671e776a9540" aria-disabled="true" id="boton-prev"></div>
+    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+	</div>
+`;
+document.getElementById("ingresarData").innerHTML = cad;
 
-console.log("Nombre: ", animal.nombre);
-console.log("Dueño: ", animal.duenio);
-console.log("Raza: ", animal.raza);
-console.log("Edad: ", animal.edad + " años");
-console.log("Activdad 1: ", animal.actividad[0]);
-console.log("Activdad 2: ", animal.actividad[1]);
-console.log("Activdad 3: ", animal.actividad[2]);
-console.log("Comida 1: ", animal.comida[0]);
-console.log("Comida 2: ", animal.comida[1]);
-console.log("Comida 3: ", animal.comida[2]);
-console.log("Visita al Veterinario: ", animal.visita);
-console.log("vacuna: ", animal.vacuna);
+var swiper = new Swiper('.swiper-container', {
+	navigation: {
+		nextEl: '.swiper-button-next',
+		prevEl: '.swiper-button-prev'
+	},
+	slidesPerView: 1,
+	spaceBetween: 10,
+	pagination: {
+		el: '.swiper-pagination',
+		clickable: true,
+	},
 
-
-const botonNombre = document.querySelector(".nombre");
-botonNombre.addEventListener("click", function(){
-    let tituloNombre = botonNombre.textContent;
-    if(tituloNombre == "Nombre de tu Mascota"){
-        botonNombre.textContent =  animal.nombre;
-    } else {
-        tituloNombre = "Nombre de tu Mascota";
-        botonNombre.textContent =  tituloNombre;
-    }
+	breakpoints: {
+		420: {
+			slidesPerView: 1,
+			spaceBetween: 20,
+		},
+		640: {
+			slidesPerView: 2,
+			spaceBetween: 40,
+		},
+		780: {
+			slidesPerView: 3,
+			spaceBetween: 40,
+		},
+		980: {
+			slidesPerView: 4,
+			spaceBetween: 50,
+		},
+	}
 });
-
-const botonDuenio = document.querySelector(".duenio");
-botonDuenio.addEventListener("click", function(){
-    let tituloDuenio = botonDuenio.textContent;
-    if(tituloDuenio == "Dueño/a de Mascota"){
-        botonDuenio.textContent =  animal.duenio;
-    } else {
-        tituloDuenio = "Dueño/a de Mascota";
-        botonDuenio.textContent =  tituloDuenio;
-    }
-});
-
-const botonRaza = document.querySelector(".raza");
-botonRaza.addEventListener("click", function(){
-    let tituloRaza = botonRaza.textContent;
-    if(tituloRaza == "Raza"){
-        botonRaza.textContent = animal.raza;
-    }else{
-        tituloRaza = "Raza";
-        botonRaza.textContent = tituloRaza;
-    }
-})
-
-const botonEdad = document.querySelector(".edad");
-botonEdad.addEventListener("click", function(){
-    let tituloEdad = botonEdad.textContent;
-    if(tituloEdad == "Edad"){
-        botonEdad.textContent = animal.edad;
-    }else{
-        tituloEdad = "Edad";
-        botonEdad.textContent = tituloEdad;
-    }
-})
-
-const botonActividades = document.querySelector(".actividad");
-botonActividades.addEventListener("click", function(){
-    let tituloActividad = botonActividades.textContent;
-    if(tituloActividad == "Actividades"){
-        botonActividades.textContent = animal.actividad;
-    }else{
-        tituloActividad = "Actividades";
-        botonActividades.textContent = tituloActividad;
-    }
-})
-
-
-const botonComida = document.querySelector(".comida");
-botonComida.addEventListener("click", function(){
-    let tituloComida = botonComida.textContent;
-    if(tituloComida == "Comida"){
-        botonComida.textContent = animal.comida;
-    }else{
-        tituloComida = "Comida";
-        botonComida.textContent = tituloComida;
-    }
-})
-
-const botonVisita = document.querySelector(".visita");
-botonVisita.addEventListener("click", function(){
-    let tituloVisita = botonVisita.textContent;
-    if(tituloVisita == "Visita al veterinario"){
-        botonVisita.textContent = animal.visita;
-    }else{
-        tituloVisita = "Visita al veterinario";
-        botonVisita.textContent = tituloVisita;
-    }
-})
-
-const botonVacunas = document.querySelector(".vacuna");
-botonVacunas.addEventListener("click", function(){
-    let tituloVisita = botonVacunas.textContent;
-    if(tituloVisita == "Vacunas"){
-        botonVacunas.textContent = animal.vacuna;
-    }else{
-        tituloVisita = "Vacunas";
-        botonVacunas.textContent = tituloVisita;
-    }
-})
